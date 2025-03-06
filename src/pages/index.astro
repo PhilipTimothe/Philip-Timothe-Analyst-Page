@@ -6,6 +6,8 @@ import BlogPost from '../components/BlogPost.astro';
 import SkillCard from '../components/SkillCard.astro';
 import TimelineEvent from '../components/TimelineEvent.astro';
 
+import heroImage from '../assets/Philip.png';
+
 const projects = [
   {
     title: "Loan Default Risk Analysis",
@@ -138,7 +140,7 @@ const creativeWorks = [
       <div class="absolute inset-0 z-0" id="parallax-container">
         <div class="relative h-[150%] -top-[00%]">
           <img 
-            src="/src/assets/Philip.png" 
+            src={heroImage} 
             alt="Hero image" 
             class="w-full h-full object-cover object-top"
             id="parallax-image"
@@ -300,7 +302,7 @@ const creativeWorks = [
           
           <div class="pt-8">
             <a 
-              href="public/Philip Timothe Analyst CV.pdf"
+              href="/Philip Timothe Analyst CV.pdf"
               download
               class="inline-flex items-center gap-3 px-8 py-4 bg-accent text-black font-futura tracking-wider hover:bg-accent/90 transition-colors rounded-lg"
             >
