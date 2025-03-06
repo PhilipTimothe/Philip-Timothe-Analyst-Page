@@ -4,9 +4,14 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   integrations: [tailwind(), react()],
-  site: "https://philiptimothe.github.io/",
-  base: "/Philip-Timothe-Analyst-Page/",
+  site: "https://philiptimothe.github.io",
+  base: "/Philip-Timothe-Analyst-Page",
   build: {
-    assets: "static",
+    assets: "_assets",
+  },
+  vite: {
+    build: {
+      assetsDir: "assets",
+    },
   },
 });
