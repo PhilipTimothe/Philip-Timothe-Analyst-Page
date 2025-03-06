@@ -4,8 +4,8 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   integrations: [tailwind(), react()],
-  site: "https://philiptimothe.github.io",
-  base: "/portfolio",
+  site: "https://philiptimothe.github.io/portfolio",
+  base: "/portfolio/",
   build: {
     assets: "assets",
   },

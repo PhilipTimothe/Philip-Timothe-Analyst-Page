@@ -1,9 +1,11 @@
 ---
+const basePath = import.meta.env.BASE_URL; // Auto-detect Astro's base path
+
 const navItems = [
-  { text: "Projects", href: "/portfolio#work" },
-  { text: "My Story", href: "/portfolio#about" },
-  { text: "Creator Space", href: "/portfolio#creative-work" },
-  { text: "Connect", href: "/portfolio#contact" },
+  { text: "Projects", href: `${basePath}#work` },
+  { text: "My Story", href: `${basePath}#about` },
+  { text: "Creator Space", href: `${basePath}#creative-work` },
+  { text: "Connect", href: `${basePath}#contact` },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -16,7 +18,7 @@ const isProjectPage = currentPath.includes('/projects/');
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center justify-between w-full">
           <a 
-            href="/portfolio" 
+            href={basePath} 
             class="text-xl tracking-[0.2em] uppercase text-white hover:text-accent transition-colors"
           >
             PT
@@ -67,18 +69,18 @@ const isProjectPage = currentPath.includes('/projects/');
       }
     }
 
-    // Handle navigation clicks
-    document.querySelectorAll("a[href^='#'], a[href*='#']").forEach(anchor => {
+    // Handle navigation clicks for both same-page and cross-page scrolling
+    document.querySelectorAll("a[href^='${basePath}#'], a[href*='#']").forEach(anchor => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        const targetId = this.getAttribute("href").split("#")[1];
+        const targetHash = this.getAttribute("href").split("#")[1];
 
-        if (document.getElementById(targetId)) {
+        if (document.getElementById(targetHash)) {
           // If section exists on the same page, scroll smoothly
-          document.getElementById(targetId).scrollIntoView({ behavior: "smooth", block: "start" });
+          document.getElementById(targetHash).scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
           // If section is on another page, navigate first, then scroll after load
-          sessionStorage.setItem('scrollToSection', targetId);
+          sessionStorage.setItem('scrollToSection', targetHash);
           window.location.href = this.getAttribute("href").split("#")[0]; // Navigate without hash
         }
       });
