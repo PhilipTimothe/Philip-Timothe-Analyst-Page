@@ -1,10 +1,13 @@
 ---
 const navItems = [
-  { text: "Projects", href: "#work" },
-  { text: "My Story", href: "#about" },
-  { text: "Creator Space", href: "#creative-work" },
-  { text: "Connect", href: "#contact" },
+  { text: "Projects", href: "/portfolio#work" },
+  { text: "My Story", href: "/portfolio#about" },
+  { text: "Creator Space", href: "/portfolio#creative-work" },
+  { text: "Connect", href: "/portfolio#contact" },
 ];
+
+const currentPath = Astro.url.pathname;
+const isProjectPage = currentPath.includes('/projects/');
 ---
 
 <header class="fixed w-full top-0 z-50 py-8">
@@ -13,7 +16,7 @@ const navItems = [
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center justify-between w-full">
           <a 
-            href="/" 
+            href="/portfolio" 
             class="text-xl tracking-[0.2em] uppercase text-white hover:text-accent transition-colors"
           >
             PT
@@ -26,6 +29,7 @@ const navItems = [
                 class={`text-xl tracking-[0.2em] uppercase transition-colors ${
                   index === 0 ? 'text-accent' : 'text-white hover:text-accent'
                 }`}
+                data-nav-link={isProjectPage ? 'true' : 'false'}
               >
                 {item.text}
               </a>
@@ -51,3 +55,40 @@ const navItems = [
     background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    function smoothScrollToSection(hash) {
+      const targetSection = document.querySelector(hash);
+      if (targetSection) {
+        setTimeout(() => {
+          targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+      }
+    }
+
+    // Handle navigation clicks
+    document.querySelectorAll("a[href^='#'], a[href*='#']").forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href").split("#")[1];
+
+        if (document.getElementById(targetId)) {
+          // If section exists on the same page, scroll smoothly
+          document.getElementById(targetId).scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          // If section is on another page, navigate first, then scroll after load
+          sessionStorage.setItem('scrollToSection', targetId);
+          window.location.href = this.getAttribute("href").split("#")[0]; // Navigate without hash
+        }
+      });
+    });
+
+    // If page loads with a stored scroll target, scroll smoothly after load
+    const storedSection = sessionStorage.getItem('scrollToSection');
+    if (storedSection) {
+      sessionStorage.removeItem('scrollToSection'); // Remove after use
+      smoothScrollToSection(`#${storedSection}`);
+    }
+  });
+</script>
