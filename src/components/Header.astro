@@ -1,0 +1,53 @@
+---
+const navItems = [
+  { text: "Projects", href: "#work" },
+  { text: "My Story", href: "#about" },
+  { text: "Creator Space", href: "#creative-work" },
+  { text: "Connect", href: "#contact" },
+];
+---
+
+<header class="fixed w-full top-0 z-50 py-8">
+  <div class="container">
+    <nav class="flex items-center">
+      <div class="flex items-center justify-between w-full">
+        <div class="flex items-center justify-between w-full">
+          <a 
+            href="/" 
+            class="text-xl tracking-[0.2em] uppercase text-white hover:text-accent transition-colors"
+          >
+            PT
+          </a>
+          
+          <div class="hidden md:flex items-center gap-24">
+            {navItems.map((item, index) => (
+              <a 
+                href={item.href}
+                class={`text-xl tracking-[0.2em] uppercase transition-colors ${
+                  index === 0 ? 'text-accent' : 'text-white hover:text-accent'
+                }`}
+              >
+                {item.text}
+              </a>
+            ))}
+          </div>
+          
+          <button 
+            class="md:hidden"
+            aria-label="Toggle menu"
+          >
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  }
+</style>

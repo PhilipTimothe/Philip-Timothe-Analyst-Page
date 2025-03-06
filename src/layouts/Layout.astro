@@ -1,0 +1,33 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource/space-grotesk';
+import '@fontsource/urbanist';
+import '../styles/global.css';
+import SocialSidebar from '../components/SocialSidebar.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Portfolio showcasing data science and creative work" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-black text-gray-300">
+    <div class="relative">
+      <slot />
+      <SocialSidebar />
+    </div>
+  </body>
+</html>

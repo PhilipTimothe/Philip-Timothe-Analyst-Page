@@ -1,0 +1,240 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const project = {
+  title: "Contact List",
+  category: "JavaScript | Frontend Development",
+  description: "A pure JavaScript application that simulates an iPhone-like contact management system, featuring dynamic contact management, search functionality, and sorting capabilities. Built with vanilla JavaScript to demonstrate fundamental programming concepts and UI implementation.",
+  techStack: [
+    { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" },
+    { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" },
+    { name: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg" },
+    { name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-plain.svg" },
+    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" }
+  ],
+  githubLink: "https://github.com/PhilipTimothe/Contact_List",
+  demoLink: "https://philiptimothe.github.io/Contact_List/",
+  keyFeatures: [
+    "Dynamic contact list rendering",
+    "Real-time search functionality",
+    "Ascending/descending sort options",
+    "Detailed contact information view",
+    "Add new contact capability"
+  ],
+  images: {
+    main: "/src/assets/Contact List.jpg",
+    search: "/src/assets/Contact List-2.jpg",
+    add: "/src/assets/Contact List-3.jpg",
+    detail: "/src/assets/Contact List-4.jpg",
+    sort: "/src/assets/Contact List-5.jpg"
+  },
+  implementation: [
+    {
+      title: "Pure JavaScript Architecture",
+      description: "Implemented using vanilla JavaScript to demonstrate core programming concepts without relying on frameworks."
+    },
+    {
+      title: "Dynamic UI Updates",
+      description: "Real-time DOM manipulation for instant user feedback and smooth interactions."
+    },
+    {
+      title: "Search Algorithm",
+      description: "Efficient search implementation allowing users to find contacts by name or partial matches."
+    },
+    {
+      title: "Sort Functionality",
+      description: "Custom sorting algorithm for both ascending and descending order of contacts."
+    }
+  ],
+  technicalHighlights: [
+    {
+      title: "Frontend Architecture",
+      description: "Built with a modular approach to JavaScript, separating concerns for maintainability."
+    },
+    {
+      title: "UI/UX Design",
+      description: "iPhone-inspired interface with smooth transitions and intuitive navigation."
+    },
+    {
+      title: "Data Management",
+      description: "In-memory data handling with CRUD operations simulating a backend system."
+    },
+    {
+      title: "Responsive Design",
+      description: "Bootstrap implementation ensuring consistent experience across devices."
+    }
+  ]
+};
+---
+
+<Layout title={project.title}>
+  <Header />
+  
+  <main class="min-h-screen pt-24 pb-24 bg-gradient-to-b from-black via-black/92 to-black">
+    <div class="container max-w-7xl mx-auto px-4">
+      <!-- Header Section -->
+      <div class="mb-16">
+        <p class="text-accent uppercase tracking-[0.2em] mb-4 font-futura">{project.category}</p>
+        <h1 class="text-4xl md:text-5xl font-display font-medium tracking-[0.05em] text-white mb-6">{project.title}</h1>
+        <p class="text-xl text-gray-300 leading-relaxed max-w-3xl font-light">{project.description}</p>
+      </div>
+
+      <!-- Project Links -->
+      <section class="mb-16">
+        <div class="flex gap-6">
+          <a 
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 hover:bg-gray-800/20 px-6 py-3 transition-colors"
+          >
+            <img 
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+              alt="GitHub"
+              class="w-6 h-6 invert"
+            />
+            <span class="text-white font-futura tracking-wider">GitHub</span>
+          </a>
+          
+          <a 
+            href={project.demoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 hover:bg-gray-800/20 px-6 py-3 transition-colors"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              class="w-6 h-6 text-white"
+            >
+              <path 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+            <span class="text-white font-futura tracking-wider">Live Demo</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Tech Stack -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Tech Stack</h2>
+        <div class="flex justify-between items-center">
+          {project.techStack.map((tech) => (
+            <div class="group flex flex-col items-center gap-4">
+              <div class="w-16 h-16 flex items-center justify-center">
+                <img 
+                  src={tech.icon} 
+                  alt={tech.name}
+                  class="w-12 h-12 object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <p class="text-sm font-futura tracking-[0.1em] text-gray-400 group-hover:text-white transition-colors">
+                {tech.name}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Features Showcase -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Key Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {project.keyFeatures.map((feature) => (
+            <div class="bg-gray-800/40 p-6">
+              <div class="w-2 h-2 bg-accent rounded-full mb-4"></div>
+              <p class="text-white text-lg font-light">{feature}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Visual Showcase -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Visual Showcase</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-800/40 p-6">
+            <h3 class="text-xl font-display text-white mb-4">Main Interface</h3>
+            <div class="aspect-video relative overflow-hidden">
+              <img 
+                src={project.images.main}
+                alt="Main Interface"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <p class="mt-4 text-gray-300 font-light">Clean and intuitive contact list interface</p>
+          </div>
+
+          <div class="bg-gray-800/40 p-6">
+            <h3 class="text-xl font-display text-white mb-4">Search Functionality</h3>
+            <div class="aspect-video relative overflow-hidden">
+              <img 
+                src={project.images.search}
+                alt="Search Feature"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <p class="mt-4 text-gray-300 font-light">Real-time search with instant results</p>
+          </div>
+
+          <div class="bg-gray-800/40 p-6">
+            <h3 class="text-xl font-display text-white mb-4">Contact Details</h3>
+            <div class="aspect-video relative overflow-hidden">
+              <img 
+                src={project.images.detail}
+                alt="Contact Details"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <p class="mt-4 text-gray-300 font-light">Detailed view of contact information</p>
+          </div>
+
+          <div class="bg-gray-800/40 p-6">
+            <h3 class="text-xl font-display text-white mb-4">Add New Contact</h3>
+            <div class="aspect-video relative overflow-hidden">
+              <img 
+                src={project.images.add}
+                alt="Add Contact Feature"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <p class="mt-4 text-gray-300 font-light">Simple form for adding new contacts</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Implementation Details -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Implementation Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {project.implementation.map((detail) => (
+            <div class="bg-gray-800/40 p-6">
+              <h3 class="text-lg font-display text-accent mb-3">{detail.title}</h3>
+              <p class="text-gray-300 font-light">{detail.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Technical Highlights -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Technical Highlights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {project.technicalHighlights.map((highlight) => (
+            <div class="bg-gray-800/40 p-6">
+              <h3 class="text-lg font-display text-accent mb-3">{highlight.title}</h3>
+              <p class="text-gray-300 font-light">{highlight.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

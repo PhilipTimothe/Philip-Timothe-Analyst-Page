@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased bg-black text-gray-100;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section {
+    @apply py-20 sm:py-32;
+  }
+  
+  .btn {
+    @apply inline-flex items-center px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-accent text-black hover:bg-accent/90;
+  }
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  @apply fixed w-8 h-8 pointer-events-none mix-blend-difference z-50;
+  transform: translate(-50%, -50%);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography enhancements */
+.display-text {
+  @apply font-display text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent/80 to-accent;
+}
+
+/* Timeline styles */
+.timeline-event {
+  @apply relative transition-all duration-500 ease-out;
+}
+
+.timeline-event::before {
+  content: '';
+  @apply absolute left-[95px] top-0 w-px h-full bg-accent/20;
+}
+
+.timeline-event:last-child::before {
+  @apply h-4;
+}
+
+/* Section transitions */
+.section-transition {
+  position: relative;
+}
+
+.section-transition::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, currentColor);
+  pointer-events: none;
+}
+
+/* Add to existing animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Skill card hover effects */
+.skill-card {
+  will-change: transform, opacity;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Section perspective */
+#work, #skills {
+  perspective: 1000px;
+}
+
+.skill-decoration {
+  will-change: transform;
+  pointer-events: none;
+}
