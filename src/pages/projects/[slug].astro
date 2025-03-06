@@ -11,7 +11,7 @@ export async function getStaticPaths() {
       techStack: [
         { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
         { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-        { name: "Tableau", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/salesforce/salesforce-original.svg" },
+        { name: "Tableau", icon: "https:///cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/salesforce/salesforce-original.svg" },
         { name: "Jupyter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" },
         { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
       ],
@@ -22,11 +22,57 @@ export async function getStaticPaths() {
         "Interactive dashboards",
         "Business recommendations"
       ],
+      modelMetrics: {
+        logisticRegression: {
+          precision: 0.93,
+          recall: 0.95,
+          f1Score: 0.94,
+          accuracy: 0.89
+        },
+        randomForest: {
+          precision: 0.97,
+          recall: 0.91,
+          f1Score: 0.94,
+          accuracy: 0.90
+        }
+      },
+      keyInsights: [
+        {
+          title: "SMOTE Enhancement",
+          description: "SMOTE improved the model's ability to detect high-risk borrowers by increasing recall."
+        },
+        {
+          title: "Model Selection",
+          description: "Random Forest performed better overall, making it the preferred model for this use case."
+        },
+        {
+          title: "Future Development",
+          description: "Fine-tuning hyperparameters and exploring additional models like XGBoost."
+        }
+      ],
+      businessRecommendations: [
+        {
+          title: "Early Intervention",
+          description: "Customers with early payment delays (PAY_0, PAY_2) should be flagged for risk monitoring."
+        },
+        {
+          title: "Credit Limit Adjustments",
+          description: "Borrowers with low credit limits and high repayment issues should undergo stricter approval checks."
+        },
+        {
+          title: "Payment Behavior Monitoring",
+          description: "Implement a real-time alert system for customers showing consistent delayed payments."
+        },
+        {
+          title: "Automated Risk-Based Interest Rates",
+          description: "Adjust loan interest rates dynamically based on default probability scores."
+        }
+      ],
       images: {
-        creditLimits: `${import.meta.env.BASE_URL}assets/Distribution_of_Credit_Limits.png`,
-        paymentBehavior: `${import.meta.env.BASE_URL}assets/Payment_Behavior_Over_Time.png`,
-        featureImportance: `${import.meta.env.BASE_URL}assets/Top_Feature_Importance.png`,
-        modelPerformance: `${import.meta.env.BASE_URL}assets/Model_Performance_Comparision.png`
+        creditLimits: "/src/assets/Distribution_of_Credit_Limits.png",
+        paymentBehavior: "/src/assets/Payment_Behavior_Over_Time.png",
+        featureImportance: "/src/assets/Top_Feature_Importance.png",
+        modelPerformance: "/src/assets/Model_Performance_Comparision.png"
       },
       slug: "loan-default-analysis"
     },
@@ -49,11 +95,51 @@ export async function getStaticPaths() {
         "Interactive data visualizations",
         "Strategic business insights"
       ],
+      modelMetrics: {
+        randomForest: {
+          accuracy: 0.92,
+          precision: 0.90,
+          recall: 0.89,
+          f1Score: 0.91
+        }
+      },
+      keyInsights: [
+        {
+          title: "Experience Level Impact",
+          description: "Entry-level to executive position progression shows significant salary increases, with executive roles commanding the highest compensation."
+        },
+        {
+          title: "Company Size Correlation",
+          description: "Large companies offer higher median salaries, while smaller firms may provide competitive pay for specialized roles."
+        },
+        {
+          title: "Remote Work Trends",
+          description: "Fully remote positions show competitive compensation, sometimes exceeding onsite role salaries."
+        }
+      ],
+      businessRecommendations: [
+        {
+          title: "Competitive Salary Benchmarking",
+          description: "Companies should adjust salary structures based on industry trends to remain competitive in talent acquisition."
+        },
+        {
+          title: "Workforce Planning Strategy",
+          description: "Focus on internal growth and retention through competitive compensation and clear career progression paths."
+        },
+        {
+          title: "Global Market Positioning",
+          description: "Consider regional salary variations when expanding operations or establishing remote work hubs."
+        },
+        {
+          title: "Data-Driven Recruitment",
+          description: "Use salary insights to optimize recruitment strategies and reduce turnover through market-aligned compensation."
+        }
+      ],
       images: {
-        experienceLevel: `${import.meta.env.BASE_URL}assets/Salary_Distribution_by_Experience_Level.png`,
-        companySize: `${import.meta.env.BASE_URL}assets/Salary_Distribution_by_Company_Size.png`,
-        remoteWork: `${import.meta.env.BASE_URL}assets/Salary_Distribution_by_Remote_Work_Ratio.png`,
-        topJobs: `${import.meta.env.BASE_URL}assets/Top_10_Highest_Paying_Job_Titles.png`
+        experienceLevel: "/src/assets/Salary_Distribution_by_Experience_Level.png",
+        companySize: "/src/assets/Salary_Distribution_by_Company_Size.png",
+        remoteWork: "/src/assets/Salary_Distribution_by_Remote_Work_Ratio.png",
+        topJobs: "/src/assets/Top_10_Highest_Paying_Job_Titles.png"
       },
       slug: "salary-prediction"
     }
@@ -125,31 +211,221 @@ const { project } = Astro.props;
         </div>
       </section>
 
-      <!-- Data Insights -->
+      <!-- Tech Stack -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Tech Stack</h2>
+        <div class="flex justify-between items-center">
+          {project.techStack.map((tech) => (
+            <div class="group flex flex-col items-center gap-4">
+              <div class="w-16 h-16 flex items-center justify-center">
+                <img 
+                  src={tech.icon} 
+                  alt={tech.name}
+                  class="w-12 h-12 object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <p class="text-sm font-futura tracking-[0.1em] text-gray-400 group-hover:text-white transition-colors">
+                {tech.name}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Key Features -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Key Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {project.keyFeatures.map((feature) => (
+            <div class="bg-gray-800/40 p-6">
+              <div class="w-2 h-2 bg-accent rounded-full mb-4"></div>
+              <p class="text-white text-lg font-light">{feature}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Data Visualization Grid -->
       <section class="mb-16">
         <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Data Insights</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gray-800/40 p-6">
-            <h3 class="text-xl font-display text-white mb-4">Feature Importance Analysis</h3>
-            <div class="aspect-video relative overflow-hidden">
-              <img 
-                src={project.images.featureImportance}
-                alt="Feature Importance"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          {project.slug === "salary-prediction" ? (
+            <>
+              <!-- Experience Level Distribution -->
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Salary by Experience Level</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.experienceLevel}
+                    alt="Salary Distribution by Experience Level"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Clear salary progression from entry-level to executive positions, showing career growth potential.</p>
+              </div>
 
-          <div class="bg-gray-800/40 p-6">
-            <h3 class="text-xl font-display text-white mb-4">Model Performance Comparison</h3>
-            <div class="aspect-video relative overflow-hidden">
-              <img 
-                src={project.images.modelPerformance}
-                alt="Model Performance Comparison"
-                class="w-full h-full object-cover"
-              />
+              <!-- Company Size Impact -->
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Impact of Company Size</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.companySize}
+                    alt="Salary Distribution by Company Size"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Larger companies tend to offer higher median salaries across all positions.</p>
+              </div>
+
+              <!-- Remote Work Analysis -->
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Remote Work Compensation</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.remoteWork}
+                    alt="Salary Distribution by Remote Work Ratio"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Remote positions show competitive compensation packages, reflecting industry adaptation.</p>
+              </div>
+
+              <!-- Top Paying Jobs -->
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Highest Paying Roles</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.topJobs}
+                    alt="Top 10 Highest Paying Job Titles"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Leadership and specialized technical roles command the highest compensation.</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Distribution of Credit Limits</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.creditLimits}
+                    alt="Credit Limit Distribution"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Most customers have credit limits below $200,000, with a right-skewed distribution.</p>
+              </div>
+
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Payment Behavior Over Time</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.paymentBehavior}
+                    alt="Payment Behavior Over Time"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Customers with delayed payments in earlier months tend to continue defaulting.</p>
+              </div>
+
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Feature Importance Analysis</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.featureImportance}
+                    alt="Feature Importance"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Key factors affecting loan default risk, identified through Random Forest analysis.</p>
+              </div>
+
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-4">Model Performance Comparison</h3>
+                <div class="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.images.modelPerformance}
+                    alt="Model Performance Comparison"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p class="mt-4 text-gray-300 font-light">Comparison of different machine learning models' performance metrics.</p>
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+      <!-- Model Performance Metrics -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Model Performance</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {project.slug === "salary-prediction" ? (
+            <div class="bg-gray-800/40 p-6">
+              <h3 class="text-xl font-display text-white mb-6">Random Forest Model Metrics</h3>
+              <div class="space-y-4">
+                {Object.entries(project.modelMetrics.randomForest).map(([metric, value]) => (
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-300 capitalize font-light">{metric.replace(/([A-Z])/g, ' $1').trim()}</span>
+                    <span class="text-accent font-mono">{value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <>
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-6">Logistic Regression with SMOTE</h3>
+                <div class="space-y-4">
+                  {Object.entries(project.modelMetrics.logisticRegression).map(([metric, value]) => (
+                    <div class="flex items-center justify-between">
+                      <span class="text-gray-300 capitalize font-light">{metric.replace(/([A-Z])/g, ' $1').trim()}</span>
+                      <span class="text-accent font-mono">{value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class="bg-gray-800/40 p-6">
+                <h3 class="text-xl font-display text-white mb-6">Random Forest with SMOTE</h3>
+                <div class="space-y-4">
+                  {Object.entries(project.modelMetrics.randomForest).map(([metric, value]) => (
+                    <div class="flex items-center justify-between">
+                      <span class="text-gray-300 capitalize font-light">{metric.replace(/([A-Z])/g, ' $1').trim()}</span>
+                      <span class="text-accent font-mono">{value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+      <!-- Key Insights -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Key Insights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {project.keyInsights.map((insight) => (
+            <div class="bg-gray-800/40 p-6">
+              <h3 class="text-lg font-display text-accent mb-3">{insight.title}</h3>
+              <p class="text-gray-300 font-light">{insight.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Business Recommendations -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display tracking-[0.1em] text-white mb-6">Business Recommendations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {project.businessRecommendations.map((recommendation) => (
+            <div class="bg-gray-800/40 p-6 transition-colors">
+              <h3 class="text-lg font-display text-accent mb-3">{recommendation.title}</h3>
+              <p class="text-gray-300 font-light">{recommendation.description}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

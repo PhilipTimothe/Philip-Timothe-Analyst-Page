@@ -8,14 +8,13 @@ interface Props {
 }
 
 const { title, category, description, image, slug } = Astro.props;
-const basePath = import.meta.env.BASE_URL; // Auto-detect Astro's base path
 ---
 
 <article class="group">
-  <a href={`${basePath}projects/${slug}`} class="block space-y-6">
+  <a href={`/Philip-Timothe-Analyst-Page/projects/${slug}`} class="block space-y-6">
     <div class="aspect-[3/4] overflow-hidden bg-gray-900">
       <img 
-        src={`${basePath}${image}`} 
+        src={image} 
         alt={title}
         class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
         loading="lazy"

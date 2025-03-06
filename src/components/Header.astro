@@ -1,11 +1,9 @@
 ---
-const basePath = import.meta.env.BASE_URL; // Auto-detect Astro's base path
-
 const navItems = [
-  { text: "Projects", href: `${basePath}#work` },
-  { text: "My Story", href: `${basePath}#about` },
-  { text: "Creator Space", href: `${basePath}#creative-work` },
-  { text: "Connect", href: `${basePath}#contact` },
+  { text: "Projects", href: "/Philip-Timothe-Analyst-Page/#work" },
+  { text: "My Story", href: "/Philip-Timothe-Analyst-Page/#about" },
+  { text: "Creator Space", href: "/Philip-Timothe-Analyst-Page/#creative-work" },
+  { text: "Connect", href: "/Philip-Timothe-Analyst-Page/#contact" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -18,7 +16,7 @@ const isProjectPage = currentPath.includes('/projects/');
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center justify-between w-full">
           <a 
-            href={basePath} 
+            href="/Philip-Timothe-Analyst-Page/" 
             class="text-xl tracking-[0.2em] uppercase text-white hover:text-accent transition-colors"
           >
             PT
@@ -70,7 +68,7 @@ const isProjectPage = currentPath.includes('/projects/');
     }
 
     // Handle navigation clicks for both same-page and cross-page scrolling
-    document.querySelectorAll("a[href^='${basePath}#'], a[href*='#']").forEach(anchor => {
+    document.querySelectorAll("a[href^='/Philip-Timothe-Analyst-Page/#'], a[href*='#']").forEach(anchor => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
         const targetHash = this.getAttribute("href").split("#")[1];
