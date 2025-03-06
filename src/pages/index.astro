@@ -11,7 +11,7 @@ const projects = [
     title: "Loan Default Risk Analysis",
     category: "Data Science | Machine Learning",
     description: "A comprehensive analysis of loan default patterns using machine learning to identify high-risk borrowers and recommend data-driven strategies.",
-    image: `${import.meta.env.BASE_URL}assets/creditfuture.png`,
+    image: "src/assets/creditfuture.png",
     slug: "loan-default-analysis"
   },
   {
@@ -25,8 +25,89 @@ const projects = [
     title: "Contact List",
     category: "JavaScript | Frontend Development",
     description: "A pure JavaScript application that simulates an iPhone-like contact management system with CRUD operations and dynamic UI features.",
-    image: `${import.meta.env.BASE_URL}assets/Contact List.jpg`,
+    image: "src/assets/Contact List.jpg",
     slug: "contact-list"
+  }
+];
+
+const skills = [
+  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" },
+  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+  { name: "EDA", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
+  { name: "Tableau", icon: "https:///cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/salesforce/salesforce-original.svg" },
+  { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "Modeling", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+  { name: "Atlassian", icon: "https://cdn.simpleicons.org/atlassian/white" },
+  { name: "Data Science", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+  { name: "Microsoft Excel", icon: "https://cdn.simpleicons.org/microsoftexcel/white" },
+  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" }
+];
+
+const posts = [
+  {
+    title: "The Intersection of Data and Design",
+    date: "2024-02-15",
+    excerpt: "Exploring how data visualization can be both informative and aesthetically pleasing",
+    slug: "data-and-design"
+  },
+  {
+    title: "Machine Learning in Creative Processes",
+    date: "2024-02-01",
+    excerpt: "How AI is transforming the way we approach artistic creation",
+    slug: "ml-creativity"
+  }
+];
+
+const timelineEvents = [
+  {
+    year: "2025",
+    category: "Certification",
+    title: "Google Advanced Data Analytics & SQL for Data Science",
+    description: "Pursuing advanced certifications in data analytics and SQL to enhance expertise in data-driven decision-making and predictive modeling."
+  },
+  {
+    year: "2023",
+    category: "Career Growth",
+    title: "Content Producer | Content Designer at WhiteCoatLab",
+    description: "Developed content strategies integrating data, storytelling, and visual media. Managed partnerships with leading brands to enhance engagement and brand visibility."
+  },
+  {
+    year: "2023",
+    category: "Education",
+    title: "Certificate in FinTech | Data Science | Blockchain",
+    description: "Completed a specialized program at Columbia Engineering, focusing on financial technology, blockchain applications, and data science methodologies."
+  },
+  {
+    year: "2022",
+    category: "Career Pivot",
+    title: "Software Engineer Apprentice at Splash",
+    description: "Worked cross-functionally to refine onboarding processes, improve workflow efficiency, and leverage user interaction data for better UI/UX design."
+  },
+  {
+    year: "2021",
+    category: "Technical Foundation",
+    title: "Certificate in Full Stack Software Engineering",
+    description: "Completed an intensive coding program at Flatiron School, developing full-stack applications and gaining proficiency in modern development frameworks."
+  },
+  {
+    year: "2020",
+    category: "Career Growth",
+    title: "Client Sales Associate at Gerber Group",
+    description: "Built strong client relationships, driving a 5% year-over-year revenue increase through personalized service and engagement. Optimized service workflows, improving efficiency and customer satisfaction scores by 20%."
+  },
+  {
+    year: "2016",
+    category: "Academic Achievement",
+    title: "Bachelor of Science (B.S.) in Financial Management",
+    description: "Earned a degree from Franklin University, focusing on financial analysis, risk management, and data-driven decision-making."
+  },
+  {
+    year: "2013",
+    category: "Early Career",
+    title: "Product Allocation Specialist | Administrative Coordinator at C&S Wholesale Grocers",
+    description: "Optimized workflow processes, increasing efficiency and productivity in large-scale operations through data-driven process improvements."
   }
 ];
 
@@ -34,14 +115,14 @@ const creativeWorks = [
   {
     title: "Why Being Alone is my Safe Place",
     description: "Being alone and working with my hands on my car is frustrating but peaceful, calming, thought provoking, and more.",
-    image: `${import.meta.env.BASE_URL}assets/Alone Time.png`,
+    image: "/src/assets/Alone Time.png",
     category: "Video",
     link: "https://youtu.be/CfLif4LjfiE"
   },
   {
     title: "How Priceless Art Creates Moments of Appreciation",
     description: "The feeling behind art",
-    image: `${import.meta.env.BASE_URL}assets/Moments art-5.png`,
+    image: "/src/assets/Moments art-5.png",
     category: "Video",
     link: "https://www.youtube.com/watch?v=P_C-AT04LIk"
   }
@@ -57,7 +138,7 @@ const creativeWorks = [
       <div class="absolute inset-0 z-0" id="parallax-container">
         <div class="relative h-[150%] -top-[00%]">
           <img 
-            src={`${import.meta.env.BASE_URL}assets/Philip.png`}
+            src="Philip-Timothe-Analyst-Page/src/assets/Philip.png" 
             alt="Hero image" 
             class="w-full h-full object-cover object-top"
             id="parallax-image"
@@ -69,9 +150,12 @@ const creativeWorks = [
 
       <div class="container relative z-10 h-full flex flex-col justify-center">
         <div class="max-w-3xl space-y-8" id="hero-content">
-          <h1 class="text-5xl sm:text-7xl font-display font-medium tracking-[0.05em] text-white opacity-0" id="hero-title">
-            PHILIP TIMOTHE
-          </h1>
+          <div class="space-y-2 overflow-hidden">
+            <h1 class="text-5xl sm:text-7xl font-display font-medium tracking-[0.05em] text-white opacity-0" id="hero-title">
+              PHILIP TIMOTHE
+            </h1>
+          </div>
+          
           <p class="text-base sm:text-lg tracking-[0.2em] text-gray-400 font-light opacity-0" id="hero-subtitle">
             BI ANALYST · DATA ENGINEER · DEVELOPER · CREATOR
           </p>
@@ -79,7 +163,7 @@ const creativeWorks = [
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Work Section -->
     <section id="work" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       <div class="container relative z-10">
         <h2 class="text-2xl font-futura tracking-[0.2em] uppercase text-black mb-16 text-center opacity-0" id="projects-title">
@@ -94,28 +178,129 @@ const creativeWorks = [
           ))}
         </div>
       </div>
+      
+      <!-- Decorative background elements -->
+      <div class="absolute -left-1/4 top-1/4 w-1/2 h-1/2 bg-accent/5 rounded-full blur-3xl"></div>
+      <div class="absolute -right-1/4 bottom-1/4 w-1/2 h-1/2 bg-accent/10 rounded-full blur-3xl"></div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="relative py-32 bg-gradient-to-b from-white via-white via-20% to-black overflow-hidden">
+      <div class="container relative z-10">
+        <h2 class="text-2xl font-futura tracking-[0.2em] uppercase mb-24 text-center opacity-0 text-gray-900 transition-colors duration-500" id="skills-title">
+          SKILLS
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+          {skills.map((skill, index) => (
+            <div class="skill-card opacity-0" data-index={index}>
+              <SkillCard {...skill} />
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Parallax decorative elements -->
+      <div class="absolute -left-1/4 top-0 w-1/2 h-1/2 bg-accent/5 rounded-full blur-[100px] skill-decoration" data-speed="0.2"></div>
+      <div class="absolute -right-1/4 bottom-0 w-1/2 h-1/2 bg-accent/10 rounded-full blur-[100px] skill-decoration" data-speed="-0.2"></div>
+      <div class="absolute left-1/4 top-1/2 w-1/3 h-1/3 bg-accent/15 rounded-full blur-[80px] skill-decoration" data-speed="0.3"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-black relative overflow-hidden">
+      <div class="container relative z-10">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-24 space-y-4">
+            <h2 class="text-2xl font-futura tracking-[0.2em] uppercase text-white">My Story</h2>
+            <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
+              A journey through data, technology, and creative exploration. Each milestone represents a step towards bridging the gap between analytical thinking and artistic expression.
+            </p>
+          </div>
+
+          <div class="space-y-24">
+            {timelineEvents.map(event => <TimelineEvent {...event} />)}
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative elements -->
+      <div class="absolute left-0 top-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+      <div class="absolute right-0 bottom-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+    </section>
+
+    <!-- Creator's Space Section -->
+    <section id="creative-work" class="py-32 bg-black relative overflow-hidden">
+      <div class="container relative z-10">
+        <div class="max-w-2xl mx-auto text-center mb-20">
+          <h2 class="text-2xl font-futura tracking-[0.2em] uppercase text-white mb-6">
+            The Creator's Space
+          </h2>
+          <p class="text-gray-400 leading-relaxed">
+            Where data meets design, and analytics transforms into art. A curated collection of visual experiments and creative explorations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {creativeWorks.map((work, index) => (
+            <a 
+              href={work.link}
+              class="block group relative overflow-hidden rounded-lg"
+              data-gsap-index={index}
+              target={work.link.includes('youtube.com') ? '_blank' : undefined}
+              rel={work.link.includes('youtube.com') ? 'noopener noreferrer' : undefined}
+            >
+              <div class="aspect-[4/3] overflow-hidden">
+                <img 
+                  src={work.image} 
+                  alt={work.title}
+                  class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <span class="text-accent text-sm tracking-wider mb-2 block">
+                    {work.category}
+                  </span>
+                  <h3 class="text-2xl font-display text-white mb-2">
+                    {work.title}
+                  </h3>
+                  <p class="text-gray-300">
+                    {work.description}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Decorative elements -->
+      <div class="absolute top-1/4 -left-48 w-96 h-96 bg-accent/10 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-1/4 -right-48 w-96 h-96 bg-accent/10 rounded-full blur-[100px]"></div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-32 bg-black relative overflow-hidden">
       <div class="container relative z-10">
         <div class="max-w-2xl mx-auto text-center space-y-12">
-          <h2 class="text-2xl font-futura tracking-[0.2em] uppercase text-white mb-6">
-            Let's Connect
-          </h2>
-          <p class="text-xl text-gray-400 leading-relaxed">
-            I'd love to hear from you. Email me here.
-          </p>
-          <a 
-            href="mailto:Philip.C.Timothe@gmail.com"
-            class="text-2xl font-display text-accent hover:text-accent/80 transition-colors duration-300 block"
-          >
-            Philip.C.Timothe@gmail.com
-          </a>
+          <div class="space-y-4">
+            <h2 class="text-2xl font-futura tracking-[0.2em] uppercase text-white mb-6">
+              Let's Connect
+            </h2>
+            <p class="text-xl text-gray-400 leading-relaxed">
+              I'd love to hear from you. Email me here.
+            </p>
+            <a 
+              href="mailto:Philip.C.Timothe@gmail.com"
+              class="text-2xl font-display text-accent hover:text-accent/80 transition-colors duration-300 block"
+            >
+              Philip.C.Timothe@gmail.com
+            </a>
+          </div>
           
           <div class="pt-8">
             <a 
-              href={`${import.meta.env.BASE_URL}Philip Timothe Analyst CV.pdf`}
+              href="public/Philip Timothe Analyst CV.pdf"
               download
               class="inline-flex items-center gap-3 px-8 py-4 bg-accent text-black font-futura tracking-wider hover:bg-accent/90 transition-colors rounded-lg"
             >
@@ -130,7 +315,7 @@ const creativeWorks = [
         </div>
       </div>
     </section>
-    
+
     <footer class="bg-black py-12">
       <div class="container text-center text-gray-500">
         <p>&copy; {new Date().getFullYear()} Portfolio. All rights reserved.</p>
@@ -138,3 +323,227 @@ const creativeWorks = [
     </footer>
   </main>
 </Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero animations
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" }});
+
+  // Animate title
+  tl.fromTo("#hero-title",
+    { 
+      y: 100,
+      opacity: 0 
+    },
+    { 
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      delay: 0.5
+    }
+  );
+
+  // Animate subtitle
+  tl.fromTo("#hero-subtitle",
+    { 
+      y: 50,
+      opacity: 0 
+    },
+    { 
+      y: 0,
+      opacity: 1,
+      duration: 1
+    },
+    "-=0.8"
+  );
+
+  // Parallax effect for hero content
+  gsap.to("#hero-content", {
+    yPercent: -30,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#parallax-container",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+
+  // Parallax effect for hero image
+  const parallaxImage = document.querySelector('#parallax-image');
+  
+  if (parallaxImage) {
+    gsap.to(parallaxImage, {
+      yPercent: 15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#parallax-container",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  }
+
+  // Projects section animations
+  gsap.fromTo("#projects-title",
+    {
+      opacity: 0,
+      y: 50
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: "#work",
+        start: "top center+=100",
+        end: "top center",
+        toggleActions: "play none none reverse"
+      }
+    }
+  );
+
+  // Project cards stagger animation
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  projectCards.forEach((card, index) => {
+    gsap.fromTo(card,
+      {
+        opacity: 0,
+        y: 50
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: index * 0.2,
+        scrollTrigger: {
+          trigger: card,
+          start: "top bottom-=100",
+          end: "top center",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+
+  // Skills section animations
+  gsap.fromTo("#skills-title",
+    {
+      opacity: 0,
+      y: 50
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: "#skills",
+        start: "top center+=100",
+        end: "top center",
+        toggleActions: "play none none reverse"
+      }
+    }
+  );
+
+  // Elegant skill cards animation
+  const skillCards = document.querySelectorAll('.skill-card');
+  
+  skillCards.forEach((card, index) => {
+    gsap.fromTo(card,
+      {
+        opacity: 0,
+        scale: 0.95,
+        y: 20
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#skills",
+          start: "top center+=100",
+          end: "top center",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+
+  // Parallax effect for decorative elements
+  const decorations = document.querySelectorAll('.skill-decoration');
+  
+  decorations.forEach(decoration => {
+    const speed = decoration.getAttribute('data-speed');
+    
+    gsap.to(decoration, {
+      y: `${100 * Number(speed)}%`,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#skills",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  });
+
+  // Animate creative works on scroll
+  const creativeWorks = document.querySelectorAll('[data-gsap-index]');
+  
+  creativeWorks.forEach((work, index) => {
+    gsap.from(work, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: work,
+        start: "top bottom-=100",
+        end: "top center",
+        toggleActions: "play none none reverse"
+      },
+      delay: index * 0.2
+    });
+  });
+</script>
+
+<style>
+  #hero-title, #hero-subtitle {
+    will-change: transform, opacity;
+  }
+
+  .project-card {
+    will-change: transform, opacity;
+  }
+
+  .skill-card {
+    will-change: transform, opacity;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .skill-card:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  #work {
+    perspective: 1000px;
+  }
+
+  #skills {
+    perspective: 1000px;
+  }
+
+  .skill-decoration {
+    will-change: transform;
+    pointer-events: none;
+  }
+</style>
