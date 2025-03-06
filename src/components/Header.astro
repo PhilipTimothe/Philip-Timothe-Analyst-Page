@@ -1,54 +1,61 @@
 ---
-const base = import.meta.env.BASE_URL || "/Philip-Timothe-Analyst-Page/";
-
 const navItems = [
-  { text: "Projects", href: `${base}#work` },
-  { text: "My Story", href: `${base}#about` },
-  { text: "Creator Space", href: `${base}#creative-work` },
-  { text: "Connect", href: `${base}#contact` },
+  { text: "Projects", href: "/Philip-Timothe-Analyst-Page/#work" },
+  { text: "My Story", href: "/Philip-Timothe-Analyst-Page/#about" },
+  { text: "Creator Space", href: "/Philip-Timothe-Analyst-Page/#creative-work" },
+  { text: "Connect", href: "/Philip-Timothe-Analyst-Page/#contact" },
 ];
 
 const currentPath = Astro.url.pathname;
 const isProjectPage = currentPath.includes('/projects/');
 ---
 
-<header class="fixed w-full top-0 z-50 py-6 bg-black/80 backdrop-blur-md">
-  <div class="container mx-auto px-6">
-    <nav class="flex justify-between items-center">
-      <!-- Logo -->
-      <a 
-        href={base} 
-        class="text-xl font-bold tracking-wide uppercase text-white hover:text-accent transition-colors"
-      >
-        PT
-      </a>
-      
-      <!-- Navigation Links -->
-      <div class="hidden md:flex items-center gap-10">
-        {navItems.map((item, index) => (
+<header class="fixed w-full top-0 z-50 py-8">
+  <div class="container">
+    <nav class="flex items-center">
+      <div class="flex items-center justify-between w-full">
+        <div class="flex items-center justify-between w-full">
           <a 
-            href={item.href}
-            class={`text-sm sm:text-lg tracking-wide uppercase transition-colors font-medium ${
-              index === 0 ? 'text-accent' : 'text-white hover:text-accent'
-            }`}
-            data-nav-link={isProjectPage ? 'true' : 'false'}
+            href="/Philip-Timothe-Analyst-Page/" 
+            class="text-xl tracking-[0.2em] uppercase text-white hover:text-accent transition-colors"
           >
-            {item.text}
+            PT
           </a>
-        ))}
+          
+          <div class="hidden md:flex items-center gap-24">
+            {navItems.map((item, index) => (
+              <a 
+                href={item.href}
+                class={`text-xl tracking-[0.2em] uppercase transition-colors ${
+                  index === 0 ? 'text-accent' : 'text-white hover:text-accent'
+                }`}
+                data-nav-link={isProjectPage ? 'true' : 'false'}
+              >
+                {item.text}
+              </a>
+            ))}
+          </div>
+          
+          <button 
+            class="md:hidden"
+            aria-label="Toggle menu"
+          >
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden" aria-label="Toggle menu">
-        <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </nav>
   </div>
 </header>
 
-<!-- JavaScript for Smooth Scrolling -->
+<style>
+  header {
+    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  }
+</style>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     function smoothScrollToSection(hash) {
@@ -61,7 +68,7 @@ const isProjectPage = currentPath.includes('/projects/');
     }
 
     // Handle navigation clicks for both same-page and cross-page scrolling
-    document.querySelectorAll("a[href^='" + import.meta.env.BASE_URL + "#'], a[href*='#']").forEach(anchor => {
+    document.querySelectorAll("a[href^='/Philip-Timothe-Analyst-Page/#'], a[href*='#']").forEach(anchor => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
         const targetHash = this.getAttribute("href").split("#")[1];
