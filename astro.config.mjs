@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [tailwind(), react()],
   site: "https://philiptimothe.com",
-  base: "/Philip-Timothe-Analyst-Page",
+  // base: "/Philip-Timothe-Analyst-Page",
   build: {
     assets: "_assets",
   },
