@@ -1,9 +1,9 @@
 ---
 const navItems = [
-  { text: "Projects", href: "/Philip-Timothe-Analyst-Page/#work" },
-  { text: "My Story", href: "/Philip-Timothe-Analyst-Page/#about" },
-  { text: "Creator Space", href: "/Philip-Timothe-Analyst-Page/#creative-work" },
-  { text: "Connect", href: "/Philip-Timothe-Analyst-Page/#contact" },
+  { text: "Projects", href: "/#work" },
+  { text: "My Story", href: "/#about" },
+  { text: "Creator Space", href: "/#creative-work" },
+  { text: "Connect", href: "/#contact" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -16,7 +16,7 @@ const isProjectPage = currentPath.includes('/projects/');
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center justify-between w-full">
           <a 
-            href="/Philip-Timothe-Analyst-Page/" 
+            href="/" 
             class="text-xl tracking-[0.2em] uppercase text-white hover:text-accent transition-colors"
           >
             PT
@@ -68,7 +68,7 @@ const isProjectPage = currentPath.includes('/projects/');
     }
 
     // Handle navigation clicks for both same-page and cross-page scrolling
-    document.querySelectorAll("a[href^='/Philip-Timothe-Analyst-Page/#'], a[href*='#']").forEach(anchor => {
+    document.querySelectorAll("a[href^='/#'], a[href*='#']").forEach(anchor => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
         const targetHash = this.getAttribute("href").split("#")[1];
