@@ -36,17 +36,39 @@ const isProjectPage = currentPath.includes('/projects/');
             ))}
           </div>
           
+          <!-- Mobile Menu Button -->
           <button 
-            class="md:hidden"
+            id="menuButton"
+            class="md:hidden relative z-50 w-10 h-10 flex items-center justify-center"
             aria-label="Toggle menu"
           >
-            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <div class="w-6 h-6 flex flex-col justify-center items-center">
+              <span class="w-full h-0.5 bg-white transform transition-all duration-300 origin-center"></span>
+              <span class="w-full h-0.5 bg-white transform transition-all duration-300 origin-center mt-1.5"></span>
+              <span class="w-full h-0.5 bg-white transform transition-all duration-300 origin-center mt-1.5"></span>
+            </div>
           </button>
         </div>
       </div>
     </nav>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div
+    id="mobileMenu"
+    class="fixed inset-0 bg-black/95 backdrop-blur-lg transform translate-x-full transition-transform duration-500 ease-in-out md:hidden flex flex-col items-center justify-center space-y-8"
+  >
+    {navItems.map((item, index) => (
+      <a 
+        href={item.href}
+        class={`block text-2xl tracking-[0.2em] uppercase transition-colors ${
+          index === 0 ? 'text-accent' : 'text-white hover:text-accent'
+        }`}
+        data-nav-link={isProjectPage ? 'true' : 'false'}
+      >
+        {item.text}
+      </a>
+    ))}
   </div>
 </header>
 
@@ -54,10 +76,58 @@ const isProjectPage = currentPath.includes('/projects/');
   header {
     background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
   }
+
+  #mobileMenu {
+    will-change: transform;
+  }
+
+  #menuButton span {
+    will-change: transform, opacity;
+  }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Mobile Menu Toggle
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuBars = menuButton?.querySelectorAll("span");
+    let isOpen = false;
+
+    function toggleMenu() {
+      isOpen = !isOpen;
+      
+      // Toggle menu visibility
+      if (mobileMenu) {
+        mobileMenu.style.transform = isOpen ? "translateX(0)" : "translateX(100%)";
+      }
+
+      // Animate hamburger to "X"
+      if (menuBars) {
+        if (isOpen) {
+          menuBars[0].style.transform = "rotate(45deg) translate(0.33rem, 0.33rem)";
+          menuBars[1].style.opacity = "0";
+          menuBars[2].style.transform = "rotate(-45deg) translate(0.33rem, -0.33rem)";
+        } else {
+          menuBars[0].style.transform = "rotate(0) translate(0, 0)";
+          menuBars[1].style.opacity = "1";
+          menuBars[2].style.transform = "rotate(0) translate(0, 0)";
+        }
+      }
+    }
+
+    menuButton?.addEventListener("click", toggleMenu);
+
+    // Close menu when clicking a link
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (isOpen) {
+          toggleMenu();
+        }
+      });
+    });
+
+    // Smooth Scroll for Internal Links
     function smoothScrollToSection(hash) {
       const targetSection = document.querySelector(hash);
       if (targetSection) {
